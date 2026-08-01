@@ -1,59 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#315b24">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anaya Tarifas</title>
+  <meta name="theme-color" content="#5ea02b">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="wrap">
-    <section id="home" class="panel home">
-      <div class="brand">COMERCIAL ANAYA · ZONA PRIVADA</div>
-      <h1>Anaya Tarifas</h1>
-      <p>Acceso interno a tarifas y catálogos</p>
-      <div class="areas">
-        <button data-area="ferreteria">🔧 Ferretería</button>
-        <button data-area="milar">🏠 Milar</button>
-        <button data-area="fontaneria">🚿 Fontanería</button>
-      </div>
-      <div class="notice">Uso interno. Comprueba siempre la fecha de la tarifa antes de preparar una oferta o presupuesto.</div>
+  <main class="page">
+    <section id="home" class="view">
+      <section class="hero hero-home">
+        <div class="lock-circle">🔒</div>
+        <div class="hero-kicker">COMERCIAL ANAYA · ZONA PRIVADA</div>
+        <h1 class="hero-title">Zona privada de tarifas</h1>
+        <div class="hero-line"></div>
+      </section>
+
+      <section class="cards-grid">
+        <article class="area-card">
+          <div class="area-icon">🔧</div>
+          <h2>Ferretería</h2>
+          <div class="card-line"></div>
+          <p>Herramientas, maquinaria, jardín, piscina, protección laboral y suministros.</p>
+          <button class="btn btn-card" data-area="ferreteria">Acceder a Ferretería →</button>
+        </article>
+
+        <article class="area-card">
+          <div class="area-icon">🏠</div>
+          <h2>Milar</h2>
+          <div class="card-line"></div>
+          <p>Electrodomésticos, climatización, electrónica y campañas comerciales.</p>
+          <button class="btn btn-card" data-area="milar">Acceder a Milar →</button>
+        </article>
+
+        <article class="area-card">
+          <div class="area-icon">🚿</div>
+          <h2>Fontanería</h2>
+          <div class="card-line"></div>
+          <p>Sanitario, calefacción, grifería, tubería y tratamiento de agua.</p>
+          <button class="btn btn-card" data-area="fontaneria">Acceder a Fontanería →</button>
+        </article>
+      </section>
+
+      <footer class="footer footer-home">
+        <div class="footer-box">
+          <strong>Anaya Tarifas · Beta v.1</strong><br>
+          Diseño: efedefran
+        </div>
+      </footer>
     </section>
 
-    <section id="access" class="panel hidden">
-      <button id="back" class="back">← Volver a la página principal</button>
-      <div class="hero">
-        <div class="brand">COMERCIAL ANAYA · ZONA PRIVADA</div>
-        <h2 id="areaTitle">Tarifas</h2>
-        <p>Acceso interno a tarifas y catálogos alojados en Google Drive.</p>
+    <section id="access" class="view hidden">
+      <div class="top-actions">
+        <button id="back" class="btn btn-back">← Volver a la página principal</button>
       </div>
 
-      <form id="login" class="login">
-        <h3>Acceso protegido</h3>
-        <p id="loginText"></p>
-        <div class="password-row">
-          <input id="password" type="password" autocomplete="current-password" required>
-          <button id="toggle" type="button" aria-label="Mostrar contraseña">👁</button>
-        </div>
-        <button type="submit">Acceder</button>
-        <p id="status" class="status" role="status"></p>
-      </form>
-
-      <section id="catalog" class="catalog hidden">
-        <div class="toolbar">
-          <input id="search" type="search" placeholder="Buscar tarifa o catálogo…">
-          <span id="updated"></span>
-        </div>
-        <div id="results"></div>
+      <section class="hero hero-area">
+        <div class="hero-kicker">COMERCIAL ANAYA · ZONA PRIVADA</div>
+        <h1 id="areaTitle" class="hero-title left"></h1>
+        <p class="hero-subtitle">Acceso interno a tarifas y catálogos alojados en Google Drive.</p>
       </section>
+
+      <section class="panel login-panel">
+        <form id="login" class="login-form">
+          <h2>Acceso protegido</h2>
+          <p id="loginText" class="helper"></p>
+
+          <div class="password-wrap">
+            <input id="password" type="password" placeholder="Introduce la contraseña" autocomplete="current-password" required>
+            <button id="toggle" type="button" class="toggle-btn" aria-label="Mostrar u ocultar contraseña">👁️</button>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large">Acceder</button>
+          <p id="status" class="status" role="status"></p>
+        </form>
+
+        <section id="catalog" class="catalog hidden">
+          <div class="catalog-head">
+            <h2>Tarifas disponibles</h2>
+            <p id="updated" class="updated"></p>
+          </div>
+
+          <div class="search-wrap">
+            <input id="search" type="search" placeholder="Buscar fabricante, tarifa o categoría...">
+          </div>
+
+          <div id="results" class="results"></div>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-box">
+          <strong>Anaya Tarifas · Beta v.1</strong><br>
+          Diseño: efedefran
+        </div>
+      </footer>
     </section>
   </main>
-
-  <footer>
-    <strong>Anaya Tarifas · Beta v.1</strong>
-    <span>Diseño: efedefran</span>
-  </footer>
 
   <script src="app.js"></script>
 </body>
