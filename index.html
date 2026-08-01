@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#315b24">
+  <title>Anaya Tarifas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <section id="home" class="panel home">
+      <div class="brand">COMERCIAL ANAYA · ZONA PRIVADA</div>
+      <h1>Anaya Tarifas</h1>
+      <p>Acceso interno a tarifas y catálogos</p>
+      <div class="areas">
+        <button data-area="ferreteria">🔧 Ferretería</button>
+        <button data-area="milar">🏠 Milar</button>
+        <button data-area="fontaneria">🚿 Fontanería</button>
+      </div>
+      <div class="notice">Uso interno. Comprueba siempre la fecha de la tarifa antes de preparar una oferta o presupuesto.</div>
+    </section>
+
+    <section id="access" class="panel hidden">
+      <button id="back" class="back">← Volver a la página principal</button>
+      <div class="hero">
+        <div class="brand">COMERCIAL ANAYA · ZONA PRIVADA</div>
+        <h2 id="areaTitle">Tarifas</h2>
+        <p>Acceso interno a tarifas y catálogos alojados en Google Drive.</p>
+      </div>
+
+      <form id="login" class="login">
+        <h3>Acceso protegido</h3>
+        <p id="loginText"></p>
+        <div class="password-row">
+          <input id="password" type="password" autocomplete="current-password" required>
+          <button id="toggle" type="button" aria-label="Mostrar contraseña">👁</button>
+        </div>
+        <button type="submit">Acceder</button>
+        <p id="status" class="status" role="status"></p>
+      </form>
+
+      <section id="catalog" class="catalog hidden">
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Buscar tarifa o catálogo…">
+          <span id="updated"></span>
+        </div>
+        <div id="results"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Anaya Tarifas · Beta v.1</strong>
+    <span>Diseño: efedefran</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
