@@ -69,13 +69,60 @@ async function loadCatalog(){
   render('');
 }
 
+function renderInfoTarifa(f){
+  const fechaTarifa=f.fechaTarifa||'';
+  const condiciones=f.condiciones||'';
+  const descuento=f.descuento||'';
+  const vigencia=f.vigencia||'';
+  const observaciones=f.observaciones||'';
+
+  const filas=[
+    ['Fecha de la tarifa',fechaTarifa],
+    ['Condiciones',condiciones],
+    ['Descuento',descuento],
+    ['Vigencia',vigencia],
+    ['Observaciones',observaciones]
+  ].filter(([,valor])=>String(valor||'').trim());
+
+  const contenido=filas.length
+    ? filas.map(([etiqueta,valor])=>`<div class="info-row"><span>${esc(etiqueta)}</span><strong>${esc(valor)}</strong></div>`).join('')
+    : `<div class="info-empty">Sin información comercial adicional. Última actualización del archivo: <strong>${esc(f.fecha||'')}</strong></div>`;
+
+  return `
+    <details class="tariff-info">
+      <summary>ⓘ Información de la tarifa</summary>
+      <div class="tariff-info-body">
+        ${contenido}
+      </div>
+    </details>`;
+}
+
 function render(q){
   const term=q.trim().toLowerCase();
   const out=[];
   (data.categorias||[]).forEach(c=>{
     const files=(c.archivos||[]).filter(f=>!term||(f.nombre+' '+c.ruta).toLowerCase().includes(term));
     if(!files.length) return;
-    out.push(`<section class="category"><h3>${esc(c.ruta||c.nombre)}</h3><div class="files">${files.map(f=>`<a class="file" href="${escAttr(f.url)}" target="_blank" rel="noopener"><span><strong>${esc(f.nombre)}</strong><br><small>${esc(f.tipo)} · ${esc(f.fecha)}</small></span><span>Ver ↗</span></a>`).join('')}</div></section>`);
+
+    out.push(`
+      <section class="category">
+        <h3>${esc(c.ruta||c.nombre)}</h3>
+        <div class="files">
+          ${files.map(f=>`
+            <article class="tariff-card">
+              <div class="tariff-main">
+                <span>
+                  <strong>${esc(f.nombre)}</strong><br>
+                  <small>${esc(f.tipo)} · Actualizado: ${esc(f.fecha)}</small>
+                </span>
+                <a class="file-action" href="${escAttr(f.url)}" target="_blank" rel="noopener">Abrir tarifa ↗</a>
+              </div>
+              ${renderInfoTarifa(f)}
+            </article>
+          `).join('')}
+        </div>
+      </section>`
+    );
   });
   $('#results').innerHTML=out.join('')||'<p>No se encontraron resultados.</p>';
 }
